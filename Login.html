@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+</head>
+<style>
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: rgb(248, 246, 246);
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+
+input {
+  display: block;
+  margin: 15px 0px;
+  font-size: 20px;
+  padding: 2%;
+  width: 100%;
+}
+
+form {
+  width: 400px;
+  border: 1px solid rgb(230, 230, 230);
+  margin: 3% auto;
+  padding: 3%;
+  background: white;
+}
+#navbar{
+        display:grid;
+        grid-template-columns: repeat(7,14.28%);
+        grid-template-rows: repeat(1,50px);
+       background-color: white;
+    }
+
+    #navbar>div{
+        padding:10px 20px 20px 20px;
+    }
+
+    #navbar>div:nth-child(4)
+    {
+        padding:0px 20px 20px 20px;
+    }
+
+
+    #navbar>div:nth-child(4)>a>img{
+ 
+        width:100%;   
+    }
+    
+    #navbar>div:nth-child(6)
+    {
+        padding-bottom:80px;
+       
+    }
+
+    #navbar>div:nth-child(6)>img{
+        width:10%;
+       
+    }
+
+    #navbar>div:nth-child(7)>a
+    {
+        text-decoration: none;
+        color:black;
+    }
+  
+   hr{
+    width:100%;
+   }
+
+   h4
+   {
+   color:blue;
+   }
+
+   #log
+   {
+    color:white;
+    background-color: rgba(11, 167, 89, 0.664);
+    border: 0px solid;
+   }
+
+   #or
+   {
+    border-bottom:1px solid rgb(223, 214, 214);
+    text-align: center;
+   }
+
+   #box>label {
+  display: block;
+  padding-left: 15px;
+  text-indent: -15px;
+}
+#box>label>input {
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  margin:0;
+  vertical-align: bottom;
+  position: relative;
+  top: -1px;
+  *overflow: hidden;
+
+
+}
+
+
+
+#form>#box
+{
+    display:flex;
+    gap:10px;
+    margin:auto;
+}
+
+#apple{
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    border: 0px;
+    border-radius: 7px;
+}
+
+#facebook{
+    background-color: rgb(115, 115, 209);
+    color: white;
+    font-weight: 200;
+    border: 0px;
+}
+
+
+#read{
+    color:blue;
+}
+
+#reading{
+    color:rgb(170, 167, 167);
+}
+
+#read{
+    color: rgb(115, 115, 209);
+    margin-bottom: 20px;
+}
+
+#second
+{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#second>p>a{
+    color:blue;
+    color: rgb(115, 115, 209);
+    text-decoration: none;
+}
+
+#last{
+    margin:20px;
+}
+
+
+#last>p>a{
+    color: blue;
+}  
+
+#last>p{
+    color:rgb(170, 167, 167);
+}
+
+#last>p>a{
+    color: rgb(115, 115, 209);  
+}
+
+ hr{
+    margin-top:5px;
+ }
+</style>
+
+<body>
+    <div id="navbar">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div><a href="./homepage.html"><img src="https://www.kindmeal.my/images/logo-kindmeal.png"/></a></div>
+        <div></div>
+        <div>Search <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVEQNqvjfiehB4K5TcJp3c95vw6tiPYfeQBg&usqp=CAU"/></div>
+        <div><a href="./Login.html">Log in</a></div>
+    </div>
+
+    <hr>
+    
+    <form id="form">
+        <h1>Log in</h1>
+        <input placeholder="Email" type="email" id="email">
+        <input placeholder="Password" type="password" id="password">
+        <h4>Forgot your password?</h4>
+        <input type="submit" value="Log in" id="log">
+        <div id="box">
+        <label><input type="checkbox" /> </label>
+        <p>Remember me</p>
+        </div>
+        
+        <p id="or">or</p>
+        <input type="submit" value="Sign in with Apple" id="apple">
+        <input type="submit" value="Continue with Facebook" id="facebook">
+
+        <hr>
+
+        <div id="second">
+            <p>New to Kindmeal? <a href="./signup.html">Sign up</a></p>  
+        </div>
+
+        <hr>
+
+        <div id="last">
+            <p>This site is protected by reCAPTCHA and the Google <a>Privacy Policy</a> and <a>Terms of Service</a> apply</p>  
+        </div>
+
+
+    </form>
+
+
+    
+   
+</body>
+<script>
+document.querySelector("form").addEventListener("submit",signingin);
+           let arr=JSON.parse(localStorage.getItem("list"))||[];
+
+            function signingin()
+            {
+             event.preventDefault();
+             let obj={
+            personemail2:document.querySelector("#email").value,
+            personpassword2:document.querySelector("#password").value,
+          }
+          let flag=false;
+          for(let i=0;i<arr.length;i++)
+          {
+            let char=arr[i];
+            if(char.personemail==obj.personemail2 && char.personpassword==obj.personpassword2)
+            {
+                flag=true;
+            }
+          }
+          if(flag==true)
+          {
+            alert("You are successfully Logged In");
+            window.location.href='homepage.html';
+          }
+          else
+          {
+            alert("Wrong Credential");
+          }
+            
+        }
+
+
+
+
+
+
+</script>
+
+</html>
